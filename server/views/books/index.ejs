@@ -1,0 +1,55 @@
+<% include ../partials/header.ejs %>
+<!--Created by Soyed Tasriq Ahmed Rahat-->
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <h3>List of my Favourite Books </h3>
+          
+          <a href="/books/add" class="btn btn-info"><i class="fa fa-plus"></i> Add new books</a>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Author</th>
+                  <th class="text-center">Genre</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Template Row -->
+                <% for (let count = 0; count < books.length; count++) { %>
+                <tr>
+                  <td><%= books[count].Title %></td>
+                  <td class="text-center">$<%= books[count].Price %></td>
+                  <td class="text-center"><%= books[count].Author %></td>
+                  <td class="text-center"><%= books[count].Genre %></td>
+
+                  <td class="text-center">
+                   <!-- A class success Edit button that will be in green colour -->
+                    <a href="/books/<%= books[count]._id %>" class="btn btn-success"><i class="fa"></i> Edit</a>
+                  </td>
+
+                  <td class="text-center">
+                     <!-- A class danger Delete button that will confirm before deleting -->
+                    <a href="/books/delete/<%= books[count]._id %>" class="btn btn-danger"><i class="fa"></i> Delete</a>
+                 </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+           <div class="col-md-offset-1 col-md-10 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
+
+
